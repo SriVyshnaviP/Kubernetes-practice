@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      type: prod
+  template:
+    metadata:
+      labels:
+        type: prod
+    spec:
+      containers:
+        - name: addressbook-con
+          image: srivyshnavip/app-dep-image
+          command: ["/bin/bash", "-c","while true; do echo hello world; sleep 5; done"]
